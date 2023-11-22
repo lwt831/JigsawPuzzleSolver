@@ -135,6 +135,7 @@ int main(int argc, char * argv[])
         user_params.setThreshold(demoptr->threshold);
         user_params.setUsingMedianFilter(!demoptr->filter);
 
+        std::filesystem::create_directory("../tmp");
         std::filesystem::create_directory(user_params.getOutputDir());
 
         // Allow some demo default values to be explicity overridden
