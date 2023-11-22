@@ -20,7 +20,7 @@
 #include "puzzle.h"
 #include "utils.h"
 #include "contours.h"
-// #include "config.h"
+#include <filesystem>
 #include <Windows.h>
 
 class demo {
@@ -127,8 +127,8 @@ int main(int argc, char * argv[])
         demo* demoptr = it->second;  
 
         // Resolve the PuzzleSolver home dir (parent of 'Scans'), by assuming the PuzzleSolver exe file is in the source directory.
-
-        user_params.setInputDir(std::string("D:\\Scans\\Angry Birds\\color"));
+        const std::string demo_path = "../datasets/input/";
+        user_params.setInputDir(demo_path + demoptr->inputDir);
         user_params.setOutputDir("/tmp/"+demoptr->name);
         user_params.setSolving(true);        
         user_params.setEstimatedPieceSize(demoptr->estimated_piece_size);
