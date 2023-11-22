@@ -129,11 +129,13 @@ int main(int argc, char * argv[])
         // Resolve the PuzzleSolver home dir (parent of 'Scans'), by assuming the PuzzleSolver exe file is in the source directory.
         const std::string demo_path = "../datasets/input/";
         user_params.setInputDir(demo_path + demoptr->inputDir);
-        user_params.setOutputDir("/tmp/"+demoptr->name);
+        user_params.setOutputDir("../tmp/"+demoptr->name);
         user_params.setSolving(true);        
         user_params.setEstimatedPieceSize(demoptr->estimated_piece_size);
         user_params.setThreshold(demoptr->threshold);
         user_params.setUsingMedianFilter(!demoptr->filter);
+
+        std::filesystem::create_directory(user_params.getOutputDir());
 
         // Allow some demo default values to be explicity overridden
         if (result.count("estimated-size")) {
@@ -217,7 +219,7 @@ int main(int argc, char * argv[])
     logger::stream() << "Starting..." << std::endl; logger::flush();
     igl::Timer timer;
     timer.start();
-
+    user_params.setSaveAll(true);
 
     puzzle puzzle(user_params);
 

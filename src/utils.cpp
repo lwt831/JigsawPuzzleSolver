@@ -37,7 +37,7 @@ imlist utils::getImages(std::string path){
     int id = 0;
     for (std::vector<std::string>::iterator i = filenames.begin(); i != filenames.end(); i++) {
         std::string filename = *i;
-        cv::Mat image = cv::imread(filename);
+        cv::Mat image = cv::imread(filename, cv::IMREAD_UNCHANGED);
         if (image.data != NULL) {
             id += 1;
             logger::stream() << "Loaded " << filename << " as image " << std::setfill('0') << std::setw(3) << id << std::endl;
