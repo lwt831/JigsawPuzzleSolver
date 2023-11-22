@@ -790,9 +790,7 @@ void puzzle::save_solution_image(){
     cv::Mat final_out_image;
     
     utils::autocrop(out_image, final_out_image);
-    cv::imshow(" ", out_image);
-    std::cout << get_solution_image_pathname() << std::endl;
-    std::cout << cv::imwrite("D:/output1/res.jpg", final_out_image) << std::endl;
+    std::cout << cv::imwrite(get_solution_image_pathname(), final_out_image) << std::endl;
     
     
 
